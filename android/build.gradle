@@ -33,3 +33,6 @@ android {
         minSdkVersion 16
     }
 }
+dependencies {
+    implementation 'androidx.exifinterface:exifinterface:1.0.0'
+}
