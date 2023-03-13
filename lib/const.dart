@@ -1,0 +1,1 @@
+const String methodChannelName ='fhoto_editor';
