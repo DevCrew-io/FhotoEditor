@@ -1,10 +1,8 @@
-
 import 'dart:io';
 import 'dart:async';
 import 'package:fhoto_editor/image_crop.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
 
 class Cropping extends StatefulWidget {
   const Cropping({Key? key}) : super(key: key);
@@ -17,7 +15,8 @@ class _CroppingState extends State<Cropping> {
   final cropKey = GlobalKey<CropState>();
   late File _file = File("path");
   late File _sample = File("path");
-  late File _lastCropped =  File("path");
+  late File _lastCropped = File("path");
+  late File croppedFile = File("path");
 
   @override
   void dispose() {
@@ -51,6 +50,9 @@ class _CroppingState extends State<Cropping> {
         Expanded(
           child: Crop.file(_sample, key: cropKey),
         ),
+        Expanded(
+          child: Image.file(File(croppedFile.path)),
+        ),
         Container(
           padding: const EdgeInsets.only(top: 20.0),
           alignment: AlignmentDirectional.center,
@@ -65,7 +67,10 @@ class _CroppingState extends State<Cropping> {
                       .button
                       ?.copyWith(color: Colors.white),
                 ),
-                onPressed: () => _cropImage(),
+                onPressed: () async {
+                  croppedFile = (await _cropImage())!;
+                  setState(() {});
+                },
               ),
               _buildOpenImage(),
             ],
@@ -79,14 +84,16 @@ class _CroppingState extends State<Cropping> {
     return TextButton(
       child: Text(
         'Open Image',
-        style: Theme.of(context).textTheme.button?.copyWith(color: Colors.white),
+        style:
+            Theme.of(context).textTheme.button?.copyWith(color: Colors.white),
       ),
       onPressed: () => _openImage(),
     );
   }
 
   Future<void> _openImage() async {
-    final pickedFile = await ImagePicker().getImage(source: ImageSource.gallery);
+    final pickedFile =
+        await ImagePicker().getImage(source: ImageSource.gallery);
     final file = File(pickedFile?.path as String);
     final sample = await ImageCrop.sampleImage(
       file: file,
@@ -102,12 +109,12 @@ class _CroppingState extends State<Cropping> {
     });
   }
 
-  Future<void> _cropImage() async {
+  Future<File?> _cropImage() async {
     final scale = cropKey.currentState?.scale;
     final area = cropKey.currentState?.area;
     if (area == null) {
       // cannot crop, widget is not setup
-      return;
+      return null;
     }
 
     // scale up to use maximum possible number of pixels
@@ -128,5 +135,6 @@ class _CroppingState extends State<Cropping> {
     _lastCropped = file;
 
     debugPrint('$file');
+    return file;
   }
 }
