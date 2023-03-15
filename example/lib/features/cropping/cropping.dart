@@ -95,10 +95,11 @@ class _CroppingState extends State<Cropping> {
     final pickedFile =
         await ImagePicker().getImage(source: ImageSource.gallery);
     final file = File(pickedFile?.path as String);
-    final sample = await ImageCrop.sampleImage(
+    final sample = await  ImageCrop.getInstance().sampleImage(file: file, preferredSize: context.size?.longestSide.ceil());
+  /*  final sample = await ImageCrop.sampleImage(
       file: file,
       preferredSize: context.size?.longestSide.ceil(),
-    );
+    );*/
 
     _sample?.delete();
     _file?.delete();
@@ -119,12 +120,12 @@ class _CroppingState extends State<Cropping> {
 
     // scale up to use maximum possible number of pixels
     // this will sample image in higher resolution to make cropped image larger
-    final sample = await ImageCrop.sampleImage(
+    final sample = await ImageCrop.getInstance().sampleImage(
       file: _file,
       preferredSize: (2000 / scale!).round(),
     );
 
-    final file = await ImageCrop.cropImage(
+    final file = await ImageCrop.getInstance().cropImage(
       file: sample,
       area: area,
     );
