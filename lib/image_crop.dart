@@ -13,5 +13,4 @@ import 'const.dart';
 
 part 'features/cropping/image_crop.dart';
 part 'features/cropping/crop.dart';
-part 'features/adjust/brightness.dart';
 part 'features/cropping/image_crop_impl.dart';
