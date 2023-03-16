@@ -1,3 +1,7 @@
+/// CropView widget is used to select the area of image for cropping, its A Stateless widget that will take the source Image
+/// and use canvas to draw the selected draggable area on the source Image
+/// CropView has two named constructor for taking source Image as a file[CropView.file] or asset [CropView.asset]
+
 part of image_crop;
 
 const _kCropGridColumnCount = 3;
@@ -14,14 +18,14 @@ enum _CropAction { none, moving, cropping, scaling }
 
 enum _CropHandleSide { none, topLeft, topRight, bottomLeft, bottomRight }
 
-class Crop extends StatefulWidget {
+class CropView extends StatefulWidget {
   final ImageProvider image;
   final double? aspectRatio;
   final double maximumScale;
   final bool alwaysShowGrid;
   final ImageErrorListener? onImageError;
 
-  const Crop({
+  const CropView({
     Key? key,
     required this.image,
     this.aspectRatio,
@@ -30,7 +34,7 @@ class Crop extends StatefulWidget {
     this.onImageError,
   }) : super(key: key);
 
-  Crop.file(
+  CropView.file(
     File file, {
     Key? key,
     double scale = 1.0,
@@ -41,7 +45,7 @@ class Crop extends StatefulWidget {
   })  : image = FileImage(file, scale: scale),
         super(key: key);
 
-  Crop.asset(
+  CropView.asset(
     String assetName, {
     Key? key,
     AssetBundle? bundle,
@@ -54,13 +58,13 @@ class Crop extends StatefulWidget {
         super(key: key);
 
   @override
-  State<StatefulWidget> createState() => CropState();
+  State<StatefulWidget> createState() => CropViewState();
 
-  static CropState? of(BuildContext context) =>
-      context.findAncestorStateOfType<CropState>();
+  static CropViewState? of(BuildContext context) =>
+      context.findAncestorStateOfType<CropViewState>();
 }
 
-class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
+class CropViewState extends State<CropView> with TickerProviderStateMixin, Drag {
   final _surfaceKey = GlobalKey();
 
   late final AnimationController _activeController;
@@ -134,7 +138,7 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
   }
 
   @override
-  void didUpdateWidget(Crop oldWidget) {
+  void didUpdateWidget(CropView oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     if (widget.image != oldWidget.image) {
