@@ -20,61 +20,45 @@ class ImageOptions {
   String toString() => '$runtimeType(width: $width, height: $height)';
 }
 
-class ImageCrop {
-  static const _channel =
-      MethodChannel(methodChannelName);
+abstract class ImageCrop {
+  ImageCrop._();
 
-  static Future<bool> requestPermissions() => _channel
-      .invokeMethod('requestPermissions')
-      .then<bool>((result) => result);
+  /// Request permissions from native side
 
-  static Future<ImageOptions> getImageOptions({
-    required File file,
-  }) async {
-    final result =
-        await _channel.invokeMethod('getImageOptions', {'path': file.path});
+  Future<bool> requestPermissions();
 
-    return ImageOptions(
-      width: result['width'],
-      height: result['height'],
-    );
-  }
+  /// Read image options, such as: width and height.
+  /// [file] is the source image. This is efficient implementation that does not decode
+  /// nor load actual image into a memory.
 
-  static Future<File> cropImage({
-    required File file,
-    required Rect area,
-    double? scale,
-  }) =>
-      _channel.invokeMethod('cropImage', {
-        'path': file.path,
-        'left': area.left,
-        'top': area.top,
-        'right': area.right,
-        'bottom': area.bottom,
-        'scale': scale ?? 1.0,
-      }).then<File>((result) => File(result));
+  Future<ImageOptions> getImageOptions({required File file});
 
-  static Future<File> sampleImage({
+
+  /// [sampleImage] is used for scaling the image before loading into memory
+  /// if you have larger image you can scale donw by setting height and width of the image [preferredWidth] and [preferredHeight]
+  /// if you have a square image then choose [preferredSize] to set height and width equally.
+  /// [file] is the source image use for scaling
+
+
+  Future<File> sampleImage({
     required File file,
     int? preferredSize,
     int? preferredWidth,
     int? preferredHeight,
-  }) async {
-    assert(() {
-      if (preferredSize == null &&
-          (preferredWidth == null || preferredHeight == null)) {
-        throw ArgumentError(
-            'Preferred size or both width and height of a resampled image must be specified.');
-      }
-      return true;
-    }());
+  });
 
-    final String path = await _channel.invokeMethod('sampleImage', {
-      'path': file.path,
-      'maximumWidth': preferredSize ?? preferredWidth,
-      'maximumHeight': preferredSize ?? preferredHeight,
-    });
 
-    return File(path);
-  }
+  /// Native support of cropping and scaling an image. In order to produce higher
+  /// quality cropped image, rely on sampling image [sampleImage] with preferred maximum width [preferredWidth] and height [preferredHeight]. Scale [scale] up a resolution of
+  /// the sampled image. When cropped, the image is in higher resolution.
+
+  Future<File> cropImage({
+    required File file,
+    required Rect area,
+    double? scale,
+  });
+
+  static ImageCrop? _instance;
+
+  static ImageCrop getInstance() => _instance ??= _ImageCropImpl();
 }

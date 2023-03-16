@@ -12,7 +12,7 @@ class Cropping extends StatefulWidget {
 }
 
 class _CroppingState extends State<Cropping> {
-  final cropKey = GlobalKey<CropState>();
+  final cropKey = GlobalKey<CropViewState>();
   late File _file = File("path");
   late File _sample = File("path");
   late File _lastCropped = File("path");
@@ -34,21 +34,17 @@ class _CroppingState extends State<Cropping> {
         child: Container(
           color: Colors.black,
           padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
-          child: _sample == null ? _buildOpeningImage() : _buildCroppingImage(),
+          child:  _buildCroppingImage(),
         ),
       ),
     );
-  }
-
-  Widget _buildOpeningImage() {
-    return Center(child: _buildOpenImage());
   }
 
   Widget _buildCroppingImage() {
     return Column(
       children: <Widget>[
         Expanded(
-          child: Crop.file(_sample, key: cropKey),
+          child: CropView.file(_sample, key: cropKey),
         ),
         Expanded(
           child: Image.file(File(croppedFile.path)),
@@ -95,11 +91,12 @@ class _CroppingState extends State<Cropping> {
     final pickedFile =
         await ImagePicker().getImage(source: ImageSource.gallery);
     final file = File(pickedFile?.path as String);
-    final sample = await ImageCrop.sampleImage(
-      file: file,
-      preferredSize: context.size?.longestSide.ceil(),
-    );
 
+    /// sampleImage is used here for scale down larger images before loading into memory.
+    /// preferredSize is being used here for square images
+    /// context.size?.longestSide.ceil() is to get actual size of height and width of image
+
+    final sample = await  ImageCrop.getInstance().sampleImage(file: file, preferredSize: context.size?.longestSide.ceil());
     _sample?.delete();
     _file?.delete();
 
@@ -117,14 +114,14 @@ class _CroppingState extends State<Cropping> {
       return null;
     }
 
-    // scale up to use maximum possible number of pixels
-    // this will sample image in higher resolution to make cropped image larger
-    final sample = await ImageCrop.sampleImage(
+    /// scale up to use maximum possible number of pixels
+    /// this will sample image in higher resolution to make cropped image larger
+    final sample = await ImageCrop.getInstance().sampleImage(
       file: _file,
       preferredSize: (2000 / scale!).round(),
     );
 
-    final file = await ImageCrop.cropImage(
+    final file = await ImageCrop.getInstance().cropImage(
       file: sample,
       area: area,
     );
