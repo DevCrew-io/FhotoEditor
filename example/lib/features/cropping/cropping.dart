@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:async';
-import 'package:fhoto_editor/image_crop.dart';
+import 'package:fhoto_editor/fhoto_editor.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 

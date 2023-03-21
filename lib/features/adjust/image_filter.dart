@@ -1,4 +1,4 @@
-part of image_crop;
+part of fhoto_editor;
 
 /// Generic widget Used for the Changing colors for the selected Image
 

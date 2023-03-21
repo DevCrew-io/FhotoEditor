@@ -2,7 +2,7 @@
 /// and use canvas to draw the selected draggable area on the source Image
 /// CropView has two named constructor for taking source Image as a file[CropView.file] or asset [CropView.asset]
 
-part of image_crop;
+part of fhoto_editor;
 
 const _kCropGridColumnCount = 3;
 const _kCropGridRowCount = 3;

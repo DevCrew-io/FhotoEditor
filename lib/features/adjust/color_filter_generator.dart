@@ -1,4 +1,4 @@
-part of image_crop;
+part of fhoto_editor;
 
 /// abstract class for generating color matrix
 
