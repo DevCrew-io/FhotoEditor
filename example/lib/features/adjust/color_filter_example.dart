@@ -1,4 +1,5 @@
 import 'package:fhoto_editor/fhoto_editor.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ColorFilterExample extends StatefulWidget {
@@ -9,17 +10,18 @@ class ColorFilterExample extends StatefulWidget {
 }
 
 class _ColorFilterExampleState extends State<ColorFilterExample> {
+
   @override
   void initState() {
     super.initState();
   }
 
-  double _hueValue = 0;
-  double _brightnessValue = 0;
-  double _saturationValue = 0;
+  double _seekbarValue = 0;
 
   @override
   Widget build(BuildContext context) {
+    final colorGen = ColorFilterGenerator.getInstance();
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -28,66 +30,24 @@ class _ColorFilterExampleState extends State<ColorFilterExample> {
         body: Stack(
           children: [
             Center(
-              child: imageColorFilter(
-                  hue: _hueValue / 200,
-                  brightness: _brightnessValue / 200,
-                  saturation: _saturationValue / 200,
-                  child: Container(
-                      decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                          "https://www.gstatic.com/webp/gallery/1.jpg"),
-                    ),
-                  ))),
-            ),
+                child: ColorFiltered(
+              colorFilter: ColorFilter.matrix(colorGen.getVibrancyMatrix(value: _seekbarValue)),
+              child: Image.asset('assets/shahid.jpeg'),
+            )),
             Column(
               children: [
-                Slider(
-                  divisions: 100,
-                  label: 'Brightness',
-                  onChanged: (value) {
-                    setState(() {
-                      _brightnessValue = value;
-                    });
-                  },
-                  max: 200,
-                  min: -200,
-                  value: _brightnessValue,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
                 Slider(
                   divisions: 100,
                   label: 'Hue',
                   onChanged: (value) {
                     setState(() {
-                      _hueValue = value;
+                      _seekbarValue = value ;
                     });
                   },
-                  max: 200,
-                  min: -200,
-                  value: _hueValue,
+                  max: 100,
+                  min: -100,
+                  value: _seekbarValue,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Slider(
-                  divisions: 100,
-                  label: 'Saturation',
-                  onChanged: (value) {
-                    setState(() {
-                      _saturationValue = value;
-                    });
-                  },
-                  max: 200,
-                  min: -200,
-                  value: _saturationValue,
-                ),
-                const SizedBox(
-                  height: 10,
-                )
               ],
             )
           ],
