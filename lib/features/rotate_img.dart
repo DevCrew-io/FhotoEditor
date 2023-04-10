@@ -1,4 +1,4 @@
-part of image_crop;
+part of fhoto_editor;
 
 /// Rotate given Image
 

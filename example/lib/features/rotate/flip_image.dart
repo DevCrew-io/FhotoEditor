@@ -1,6 +1,5 @@
 import 'dart:math';
-
-import 'package:fhoto_editor/image_crop.dart';
+import 'package:fhoto_editor/fhoto_editor.dart';
 import 'package:flutter/material.dart';
 
 class FlipImage extends StatefulWidget {
@@ -22,7 +21,7 @@ class _FlipImageState extends State<FlipImage> {
           child: Center(
             child: Column(
               children: <Widget>[
-                flipHorizontal(
+                flipImage(
                     Image.network("https://www.gstatic.com/webp/gallery/1.jpg"),
                     _rotation,
                     _isVerticalFlip),

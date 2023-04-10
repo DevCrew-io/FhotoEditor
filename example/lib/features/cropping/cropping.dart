@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:async';
-import 'package:fhoto_editor/image_crop.dart';
+import 'package:fhoto_editor/fhoto_editor.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -21,9 +21,9 @@ class _CroppingState extends State<Cropping> {
   @override
   void dispose() {
     super.dispose();
-    _file?.delete();
-    _sample?.delete();
-    _lastCropped?.delete();
+    _file.delete();
+    _sample.delete();
+    _lastCropped.delete();
   }
 
   @override
@@ -97,8 +97,8 @@ class _CroppingState extends State<Cropping> {
     /// context.size?.longestSide.ceil() is to get actual size of height and width of image
 
     final sample = await  ImageCrop.getInstance().sampleImage(file: file, preferredSize: context.size?.longestSide.ceil());
-    _sample?.delete();
-    _file?.delete();
+    _sample.delete();
+    _file.delete();
 
     setState(() {
       _sample = sample;
@@ -128,7 +128,7 @@ class _CroppingState extends State<Cropping> {
 
     sample.delete();
 
-    _lastCropped?.delete();
+    _lastCropped.delete();
     _lastCropped = file;
 
     debugPrint('$file');

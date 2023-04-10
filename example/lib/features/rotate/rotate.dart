@@ -1,4 +1,4 @@
-import 'package:fhoto_editor/image_crop.dart';
+import 'package:fhoto_editor/fhoto_editor.dart';
 import 'package:flutter/material.dart';
 
 class RotateImage extends StatefulWidget {
