@@ -35,11 +35,7 @@ class _FlipImageState extends State<FlipImage> {
                         onPressed: () {
                           _isVerticalFlip = true;
                           setState(() {
-                            if (_rotation == 0.0) {
-                              _rotation = pi;
-                            } else {
-                              _rotation = 0.0;
-                            }
+                            _rotation == 0.0?  _rotation = pi: _rotation = 0.0;
                           });
                         },
                         child: const Text("Flip Horizontal")),
@@ -47,11 +43,7 @@ class _FlipImageState extends State<FlipImage> {
                         onPressed: () {
                           _isVerticalFlip = false;
                           setState(() {
-                            if (_rotation == 0.0) {
-                              _rotation = pi;
-                            } else {
-                              _rotation = 0.0;
-                            }
+                            _rotation == 0.0?  _rotation = pi: _rotation = 0.0;
                           });
                         },
                         child: const Text("Flip Vertical"))

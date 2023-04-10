@@ -28,12 +28,9 @@ class _RotateImageState extends State<RotateImage> {
                 rotate(
                     Image.network("https://www.gstatic.com/webp/gallery/1.jpg"),
                     _rotation),
-                const Expanded(
-                  child: Text("Bottom"),
-                ),
                 Slider(
                   divisions: 100,
-                  label: 'Hue',
+                  label: 'Rotate',
                   onChanged: (value) {
                     setState(() {
                       _rotation = value;
