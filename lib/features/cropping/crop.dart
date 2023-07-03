@@ -64,7 +64,7 @@ class CropView extends StatefulWidget {
       context.findAncestorStateOfType<CropViewState>();
 }
 
-class CropViewState extends State<CropView> with TickerProviderStateMixin, Drag {
+class CropViewState extends State<CropView> with TickerProviderStateMixin {
   final _surfaceKey = GlobalKey();
 
   late final AnimationController _activeController;
