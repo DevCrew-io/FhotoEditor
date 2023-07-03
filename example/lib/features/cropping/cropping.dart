@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'dart:async';
 import 'package:fhoto_editor/fhoto_editor.dart';
+import 'package:fhoto_editor/fhoto_editor_method_channel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Cropping extends StatefulWidget {
@@ -17,7 +19,13 @@ class _CroppingState extends State<Cropping> {
   late File _sample = File("path");
   late File _lastCropped = File("path");
   late File croppedFile = File("path");
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
 
+
+  }
   @override
   void dispose() {
     super.dispose();
