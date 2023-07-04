@@ -21,10 +21,14 @@ class _FlipImageState extends State<FlipImage> {
           child: Center(
             child: Column(
               children: <Widget>[
-                flipWidget(
-                    Image.network("https://www.gstatic.com/webp/gallery/1.jpg"),
-                    _rotation,
-                    _isVerticalFlip),
+                SizedBox(
+                  height: 400,
+                  width: 400,
+                  child: flipWidget(
+                      Image.asset("assets/shahid.jpeg"),
+                      _rotation,
+                      _isVerticalFlip),
+                ),
                 const Expanded(
                   child: Text("Bottom"),
                 ),

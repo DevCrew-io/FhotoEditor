@@ -1,6 +1,7 @@
 import 'package:fhoto_editor/fhoto_editor.dart';
 import 'package:fhoto_editor_example/features/cropping/cropping.dart';
 import 'package:fhoto_editor_example/features/transformation/flip.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../transformation/rotate.dart';
@@ -269,12 +270,12 @@ class _MultiColorFilterExampleState extends State<MultiColorFilterExample> {
                     );
                   },
                   child: const Text("Flip Image")),
-              TextButton(
+        if(!kIsWeb)   TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Cropping()),
-                    );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Cropping()),
+                      );
                   },
                   child: const Text("Crop Image"))
             ],
