@@ -77,7 +77,7 @@ class _ColorFilterGenerator implements ColorFilterGenerator {
   /// so it converts the value to a range between 0 and 255. If the input value is greater than zero,
   /// the function assumes the input value is a decimal percentage of the maximum brightness,
   /// so it keeps the value in the range between 0 and 100.
-  /// input value for function[getBrightnessMatrix] is from -1 to 2
+  /// input value for function[getBrightnessMatrix] is from 0 to 1
 
   @override
   List<double> getBrightnessMatrix({required double value}) {
