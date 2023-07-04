@@ -2,7 +2,7 @@ part of fhoto_editor;
 
 /// Rotate given Image
 
-Widget rotate(Image img, double rotation) {
+Widget rotateWidget(Widget img, double rotation) {
   return Transform(
       alignment: Alignment.center,
       transform: Matrix4.rotationZ(
@@ -13,7 +13,7 @@ Widget rotate(Image img, double rotation) {
 
 /// set math.pi 0r 0 for 180 degree horizontal/vertical flip
 
-Widget flipImage(Image img, double rotation, bool isVertical) {
+Widget flipWidget(Widget img, double rotation, bool isVertical) {
   return Transform(
     alignment: Alignment.center,
     transform:

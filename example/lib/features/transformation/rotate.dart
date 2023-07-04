@@ -25,8 +25,8 @@ class _RotateImageState extends State<RotateImage> {
           child: Center(
             child: Column(
               children: <Widget>[
-                rotate(
-                    Image.network("https://www.gstatic.com/webp/gallery/1.jpg"),
+                rotateWidget(
+                    Image.asset("assets/shahid.jpeg"),
                     _rotation),
                 Slider(
                   divisions: 100,

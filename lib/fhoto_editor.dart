@@ -20,5 +20,5 @@ part 'features/cropping/image_crop_impl.dart';
 part 'features/adjust/color_filter_generator.dart';
 part 'features/adjust/color_filter_gen_impl.dart';
 part 'features/adjust/multi_color_filter_gen.dart';
-part 'features/rotate_img.dart';
+part 'features/transform_widget.dart';
 

@@ -21,7 +21,7 @@ class _FlipImageState extends State<FlipImage> {
           child: Center(
             child: Column(
               children: <Widget>[
-                flipImage(
+                flipWidget(
                     Image.network("https://www.gstatic.com/webp/gallery/1.jpg"),
                     _rotation,
                     _isVerticalFlip),
