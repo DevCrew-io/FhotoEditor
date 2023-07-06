@@ -35,7 +35,7 @@ abstract class ImageCrop {
 
 
   /// [sampleImage] is used for scaling the image before loading into memory
-  /// if you have larger image you can scale donw by setting height and width of the image [preferredWidth] and [preferredHeight]
+  /// if you have larger image you can scale down by setting height and width of the image [preferredWidth] and [preferredHeight]
   /// if you have a square image then choose [preferredSize] to set height and width equally.
   /// [file] is the source image use for scaling
 
