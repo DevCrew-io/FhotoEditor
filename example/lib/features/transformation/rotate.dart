@@ -26,7 +26,9 @@ class _RotateImageState extends State<RotateImage> {
             child: Column(
               children: <Widget>[
                 rotateWidget(
-                    Image.asset("assets/shahid.jpeg"),
+                    SizedBox(
+                        height: 400,width: 200,
+                        child: Image.asset("assets/shahid.jpeg")),
                     _rotation),
                 Slider(
                   divisions: 100,
