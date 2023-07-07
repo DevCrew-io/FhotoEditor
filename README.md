@@ -194,6 +194,7 @@ show cropped image
           child: Image.file(File(croppedFile.path)),
         )
 ```
+![Alt text](https://github.com/DevCrew-io/FhotoEditor/blob/readme/screeenshots/cropping.gif)
 ### Adjusting Hue
 ```dart
 ColorFilter.matrix(colorGen.getHueMatrix(value: _seekbarValue)
