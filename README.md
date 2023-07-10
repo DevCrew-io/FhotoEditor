@@ -252,3 +252,32 @@ double _rotation = 0.0;
 bool _isVerticalFlip = false;
 flipWidget(Image.asset("assets/image.jpeg"),_rotation,_isVerticalFlip)
 ```
+
+## Bugs and feature requests
+
+Have a bug or a feature request? Please first search for existing and closed issues. If your problem
+or idea is not addressed
+yet, [please open a new issue](https://github.com/DevCrew-io/FhotoEditor/issues/new).
+
+## Author
+
+[DevCrew I/O](https://devcrew.io/)
+<h3 align=“left”>Connect with Us:</h3>
+<p align="left">
+<a href="https://devcrew.io" target="blank"><img align="center" src="https://devcrew.io/wp-content/uploads/2022/09/logo.svg" alt="devcrew.io" height="35" width="35" /></a>
+<a href="https://www.linkedin.com/company/devcrew-io/mycompany/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="mycompany" height="30" width="40" /></a>
+<a href="https://github.com/DevCrew-io" target="blank"><img align="center" src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="DevCrew-io" height="32" width="32" /></a>
+</p>
+
+## Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+## Show your Support
+
+Give a star if this project helped you.
+
+## Copyright & License
+
+Code copyright 2023 DevCrew I/O. Code released under
+the [MIT license](https://github.com/DevCrew-io/expandable-richtext/blob/main/LICENSE).
