@@ -3,7 +3,7 @@ FhotoEditor Plugin with simple, easy support for image editing using Filters, Cr
 
 To start with this, we need to simply add the dependencies in the gradle file of our app module like this
 
-# Installation
+## Installation
 First, add image_editor_plus: as a dependency in your pubspec.yaml file.
 
 Import
@@ -12,7 +12,7 @@ import 'package:fhoto_editor/fhoto_editor.dart';
 ```
 Then run ```flutter pub get``` to install the package.
 
-# IOS
+## iOS
 Add the following keys to your Info.plist file, located in <project root>/ios/Runner/Info.plist:
 
 * NSPhotoLibraryUsageDescription - describe why your app needs permission for the photo library. This is called Privacy - Photo Library Usage Description in the visual editor.
@@ -21,7 +21,7 @@ Add the following keys to your Info.plist file, located in <project root>/ios/Ru
 <string>Used to demonstrate image picker plugin</string>
 ```
 
-# Key Features
+## Key Features
 Here is update which already done in PhotoEditing plugin
 
 [implement Single filter on given image](#single-filter-on-image)
@@ -58,26 +58,27 @@ Here is update which already done in PhotoEditing plugin
 [Rotation](#rotation)
 
 [Flip](#flip)
-# Demo
+## Demo
 ![Alt text](https://github.com/DevCrew-io/FhotoEditor/blob/readme/screeenshots/ezgif.com-video-to-gif.gif)
 
-# Usage
+## Usage
 ### Single Filter on Image
 making an instance for color generator class
 ```dart
 final colorGen = ColorFilterGenerator.getInstance();
 ```
 use it in the ColorFiltered widget as a matrix
-```dart  ColorFiltered(
-              colorFilter: ColorFilter.matrix(colorGen.getVibrancyMatrix(value: _seekbarValue)),
-              child: Image.asset('assets/shahid.jpeg'),
-            )
+```dart
+  ColorFiltered(
+         colorFilter: ColorFilter.matrix(myFilter.matrix),
+         child: Image.asset('assets/shahid.jpeg'))
 ```
 ### Multiple filters on image
 ```dart
 final colorGen = ColorFilterGenerator.getInstance();
 ```
- ```dart  ColorMultiFilterGenerator myFilter = ColorMultiFilterGenerator(filters: [
+ ```dart
+ColorMultiFilterGenerator myFilter = ColorMultiFilterGenerator(filters: [
       colorGen.getHueMatrix(value: _hueSeekbarValue),
       colorGen.getContrastMatrix(value: _contrastSeekbarValue),
       colorGen.getBrightnessMatrix(value: _brightnessSeekbarValue),
@@ -251,3 +252,32 @@ double _rotation = 0.0;
 bool _isVerticalFlip = false;
 flipWidget(Image.asset("assets/image.jpeg"),_rotation,_isVerticalFlip)
 ```
+
+## Bugs and feature requests
+
+Have a bug or a feature request? Please first search for existing and closed issues. If your problem
+or idea is not addressed
+yet, [please open a new issue](https://github.com/DevCrew-io/FhotoEditor/issues/new).
+
+## Author
+
+[DevCrew I/O](https://devcrew.io/)
+<h3 align=“left”>Connect with Us:</h3>
+<p align="left">
+<a href="https://devcrew.io" target="blank"><img align="center" src="https://devcrew.io/wp-content/uploads/2022/09/logo.svg" alt="devcrew.io" height="35" width="35" /></a>
+<a href="https://www.linkedin.com/company/devcrew-io/mycompany/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="mycompany" height="30" width="40" /></a>
+<a href="https://github.com/DevCrew-io" target="blank"><img align="center" src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="DevCrew-io" height="32" width="32" /></a>
+</p>
+
+## Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+## Show your Support
+
+Give a star if this project helped you.
+
+## Copyright & License
+
+Code copyright 2023 DevCrew I/O. Code released under
+the [MIT license](https://github.com/DevCrew-io/expandable-richtext/blob/main/LICENSE).
