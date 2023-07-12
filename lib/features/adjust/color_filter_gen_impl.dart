@@ -119,8 +119,12 @@ class _ColorFilterGenerator implements ColorFilterGenerator {
   /// This is done to convert the value from a percentage to a decimal value, which is easier to work with.
   /// for better results pass values between -6 to 2 in in function[getSaturationMatrix]
 
+
+
   @override
   List<double> getSaturationMatrix({required double value}) {
+    value =  mapOneRangeToAnother(value,0,1,-6,2,3);
+    print(value);
     value = value * 100;
 
     /// If the resulting value is 0, the function returns a list representing an identity matrix.
@@ -178,6 +182,7 @@ class _ColorFilterGenerator implements ColorFilterGenerator {
 
   @override
   List<double> getExposureMatrix({required double value}) {
+    value =  mapOneRangeToAnother(value,0,1,-2,5,3);
 
     /// The function first calculates a new value by raising 2 to the power of the value parameter,
     /// and stores the result in updatedValue.
@@ -201,7 +206,7 @@ class _ColorFilterGenerator implements ColorFilterGenerator {
 
   @override
   List<double> getContrastMatrix({required double value}) {
-
+    value =  mapOneRangeToAnother(value,0,1,0,100,3);
     /// function first calculates a scale value by adding 1 to the value parameter.
     /// It then calculates a translate value by multiplying -0.5 with the scale value and adding 0.5,
     /// and then multiplying the result with 255.
@@ -225,7 +230,8 @@ class _ColorFilterGenerator implements ColorFilterGenerator {
 
   @override
   List<double> getFadedMatrix({required double value}) {
-
+    value =  mapOneRangeToAnother(value,0,1,0,10,3);
+    print(value);
     /// The first three rows, containing all 1's, represent a solid background color or image.
     /// These rows may be used to provide a consistent backdrop for the faded effect in the last row.
     /// The fourth row, containing all 0's except for the fourth column, represents the "faded" or transparent area.
@@ -244,6 +250,7 @@ class _ColorFilterGenerator implements ColorFilterGenerator {
 
   @override
   List<double> getHighlightedMatrix({required double value}) {
+    value =  mapOneRangeToAnother(value,0,1,-1,10,3);
     var scale = value + 1;
 
     /// The translate variable is computed based on the scale value using the formula (-.1 * scale + .1) * 255.
@@ -268,6 +275,7 @@ class _ColorFilterGenerator implements ColorFilterGenerator {
 
   @override
   List<double> getShadowMatrix({required double value}) {
+    value =  mapOneRangeToAnother(value,0,1,-10,10,3);
     var scale = value + 1.0;
 
     /// The translate variable is computed based on the scale value using the formula (-.8 * scale + .8) * 255.
@@ -318,7 +326,7 @@ return smoothMatrix;*/
 
   @override
   List<double> getTemperatureMatrix({required double value}) {
-
+    value =  mapOneRangeToAnother(value,0,1,0,10,3);
     double warmth = value;
 
     ///  Creates a list of doubles with a length of 20 (4 rows and 5 columns) and fills it with 0s.
@@ -422,7 +430,7 @@ return smoothMatrix;*/
   /// where each element of the matrix corresponds to a different color channel or image property.
   /// The vibrancy matrix is typically applied to images to increase their saturation and color intensity,
   /// resulting in a more vibrant and lively appearance.
-  /// for better results pass values between -30 to 100 in function[getVibrancyMatrix]
+  /// for better results pass values between 0 to 1 in function[getVibrancyMatrix]
 
   @override
   List<double> getVibrancyMatrix({required double value}) {
@@ -448,5 +456,17 @@ return smoothMatrix;*/
       0, 0, 0, 0.8, 0,
     ];
 return vignetteMatrix;*/
+  }
+
+
+  double mapOneRangeToAnother(double sourceNumber, double fromA, double fromB, double toA, double toB, int decimalPrecision ) {
+    double deltaA = fromB - fromA;
+    double deltaB = toB - toA;
+    double scale  = deltaB / deltaA;
+    double negA   = -1 * fromA;
+    double offset = (negA * scale) + toA;
+    double finalNumber = (sourceNumber * scale) + offset;
+    int calcScale =   math.pow(10, decimalPrecision).toInt();
+    return ((finalNumber * calcScale) / calcScale).round().toDouble();
   }
 }

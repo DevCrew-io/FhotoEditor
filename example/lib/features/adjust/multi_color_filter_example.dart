@@ -23,13 +23,13 @@ class _MultiColorFilterExampleState extends State<MultiColorFilterExample> {
   double _brightnessValue = 0;
   double _hueSeekbarValue = 0;
   double _contrastSeekbarValue = 0;
-  double _saturationSeekbarValue = 0;
-  double _exposureSeekbarValue = 0;
-  double _shadowSeekbarValue = 0;
-  double _highlightedSeekbarValue = 0;
-  double _fadedSeekbarValue = 1;
+  double _saturationSeekbarValue = 0.7;
+  double _exposureSeekbarValue = .3;
+  double _shadowSeekbarValue = .5;
+  double _highlightedSeekbarValue = 0.1;
+  double _fadedSeekbarValue = .1;
   double _vibrancySeekbarValue = 0;
-  double _temperatureSeekbarValue = 0;
+  double _temperatureSeekbarValue = .1;
 
   bool _isCropClicked = false;
   bool _isRotateClicked = false;
@@ -42,16 +42,16 @@ class _MultiColorFilterExampleState extends State<MultiColorFilterExample> {
     /// Apply multi filter on Image
 
     ColorMultiFilterGenerator myFilter = ColorMultiFilterGenerator(filters: [
-      colorGen.getHueMatrix(value: _hueSeekbarValue),
-      colorGen.getContrastMatrix(value: _contrastSeekbarValue),
-      colorGen.getBrightnessMatrix(value: _brightnessValue),
-      colorGen.getSaturationMatrix(value: _saturationSeekbarValue),
-      colorGen.getExposureMatrix(value: _exposureSeekbarValue),
-      colorGen.getShadowMatrix(value: _shadowSeekbarValue),
-      colorGen.getHighlightedMatrix(value: _highlightedSeekbarValue),
-      colorGen.getFadedMatrix(value: _fadedSeekbarValue),
-      colorGen.getVibrancyMatrix(value: _vibrancySeekbarValue),
-      colorGen.getTemperatureMatrix(value: _temperatureSeekbarValue),
+       colorGen.getHueMatrix(value: _hueSeekbarValue),
+       colorGen.getContrastMatrix(value: _contrastSeekbarValue),
+       colorGen.getBrightnessMatrix(value: _brightnessValue),
+       colorGen.getSaturationMatrix(value: _saturationSeekbarValue),
+       colorGen.getExposureMatrix(value: _exposureSeekbarValue),
+       colorGen.getShadowMatrix(value: _shadowSeekbarValue),
+       colorGen.getHighlightedMatrix(value: _highlightedSeekbarValue),
+       colorGen.getFadedMatrix(value: _fadedSeekbarValue),
+       colorGen.getVibrancyMatrix(value: _vibrancySeekbarValue),
+       colorGen.getTemperatureMatrix(value: _temperatureSeekbarValue),
     ]);
 
     return MaterialApp(
@@ -208,7 +208,7 @@ class _MultiColorFilterExampleState extends State<MultiColorFilterExample> {
                             _fadedSeekbarValue = value;
                           });
                         },
-                        max: 10,
+                        max: 1,
                         min: 0,
                         value: _fadedSeekbarValue,
                       ),
@@ -244,8 +244,8 @@ class _MultiColorFilterExampleState extends State<MultiColorFilterExample> {
                             _temperatureSeekbarValue = value;
                           });
                         },
-                        max: 10,
-                        min: -5,
+                        max: 1,
+                        min: 0,
                         value: _temperatureSeekbarValue,
                       ),
                     ],
