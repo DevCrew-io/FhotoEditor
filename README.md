@@ -1,5 +1,11 @@
 # FhotoEditor
-FhotoEditor Plugin with simple, easy support for image editing using Filters, Cropping and transformation.
+
+[![pub package](https://img.shields.io/pub/v/expandable_richtext.svg)](https://pub.dev/packages/expandable_richtext)
+[![license](https://img.shields.io/badge/license-MIT-green)](https://github.com/DevCrew-io/expandable-richtext/blob/main/LICENSE)
+![](https://img.shields.io/badge/Code-Dart-informational?style=flat&logo=dart&color=29B1EE)
+![](https://img.shields.io/badge/Code-Flutter-informational?style=flat&logo=flutter&color=0C459C)
+
+FhotoEditor Plugin with simple, easy support for image editing using Filters, Cropping and transformation. plugin support for all ios and android and web, cropping feature is only available for ios and android.
 
 To start with this, we need to simply add the dependencies in the gradle file of our app module like this
 
