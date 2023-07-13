@@ -1,7 +1,11 @@
 name: fhoto_editor
-description: A new Flutter project.
+description: FhotoEditor Plugin with simple, easy support for image editing using Filters, Cropping and transformation. plugin support for all ios and android and web, cropping feature is only available for ios and android.
 version: 0.0.1
-homepage:
+homepage: https://github.com/DevCrew-io/FhotoEditor#readme
+repository: https://github.com/DevCrew-io/FhotoEditor
+issue_tracker: https://github.com/DevCrew-io/FhotoEditor/issues
+documentation: https://github.com/DevCrew-io/material-text-fields/blob/main/example/README.md
+
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
