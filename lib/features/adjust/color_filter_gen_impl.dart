@@ -370,9 +370,9 @@ return smoothMatrix;*/
      tmpColorG = 255.coerceAtMost(colorG1.coerceAtLeast(0).toInt()).toDouble();
      tmpColorB = 255.coerceAtMost(colorB1.coerceAtLeast(0).toInt()).toDouble();
 
-    double color_r = tmpColorR;
-    double color_g = tmpColorG;
-    double color_b = tmpColorB;
+    double kColorR = tmpColorR;
+    double kColorG = tmpColorG;
+    double kColorB = tmpColorB;
     kelvin = baseTemperature;
 
     double centiKelvin = kelvin / 100;
@@ -395,25 +395,25 @@ return smoothMatrix;*/
      tmpColorG = 255.coerceAtMost(colorG.coerceAtLeast(0).toInt()).toDouble();
      tmpColorB = 255.coerceAtMost(colorB.coerceAtLeast(0).toInt()).toDouble();
 
-    color_r /= tmpColorR;
-    color_g /= tmpColorG;
-    color_b /= tmpColorB;
+    kColorR /= tmpColorR;
+    kColorG /= tmpColorG;
+    kColorB /= tmpColorB;
 
-    matrix[0] = color_r;
+    matrix[0] = kColorR;
     matrix[1] = 0;
     matrix[2] = 0;
     matrix[3] = 0;
     matrix[4] = 0;
 
     matrix[5] = 0;
-    matrix[6] = color_g;
+    matrix[6] = kColorG;
     matrix[7] = 0;
     matrix[8] = 0;
     matrix[9] = 0;
 
     matrix[10] = 0;
     matrix[11] = 0;
-    matrix[12] = color_b;
+    matrix[12] = kColorB;
     matrix[13] = 0;
     matrix[14] = 0;
 
