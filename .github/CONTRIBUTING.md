@@ -17,18 +17,12 @@ We'd also love PRs. If you're thinking of a large PR, we advise opening up an is
 
 ## Submitting a pull request
 
-1. [Fork][fork] and clone the repository.
+1. [Fork](https://github.com/DevCrew-io/FhotoEditor/fork) and clone the repository.
 1. Create a new branch: `git checkout -b my-branch-name`.
 1. Make your change, add tests, and make sure the tests still pass.
-1. Push to your fork and [submit a pull request][pr].
-1. Pat your self on the back and wait for your pull request to be reviewed and merged.
+1. Push to your fork and [submit a pull request](https://github.com/DevCrew-io/FhotoEditor/compare).
+1. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
-Here are a few things you can do that will increase the likelihood of your pull request being accepted:
-
-- Follow the [style guide][style] which is using standard. Any linting errors should be shown when running `npm test`.
-- Write and update tests.
-- Keep your changes as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
-- Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
 
 Work in Progress pull requests are also welcome to get feedback early on, or if there is something blocked you.
 
